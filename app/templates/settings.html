@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Настройки интеграции с VK</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="vk_api_id" class="form-label">VK API ID:</label>
+                        <input type="text" name="vk_api_id" id="vk_api_id" class="form-control" value="{{ user.vk_api_id or '' }}">
+                        <div class="form-text">ID вашего приложения ВКонтакте.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="vk_group_id" class="form-label">VK Group ID:</label>
+                        <input type="text" name="vk_group_id" id="vk_group_id" class="form-control" value="{{ user.vk_group_id or '' }}">
+                        <div class="form-text">ID группы, в которую будут публиковаться посты.</div>
+                    </div>
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+# secrets
+config.py
+.env
+instance/
+*.db
+__pycache__/
+.venv/
+test.py
+app.db

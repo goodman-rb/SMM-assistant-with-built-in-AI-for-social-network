@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}VK Stats{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Статистика Сообщества VK</h1>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        {% if stats %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th style="width: 40%;">Параметр</th>
+                        <th>Значение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in stats.items() %}
+                    <tr>
+                        <td><strong>{{ key }}</strong></td>
+                        <td>{{ value }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center py-5">
+            <p class="lead text-muted">Данные для статистики отсутствуют.</p>
+            <a href="{{ url_for('smm.settings') }}" class="btn btn-primary">Перейти в настройки</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Post Generator{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Генератор постов</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="topic" class="form-label">Тема поста:</label>
+                        <input type="text" name="topic" id="topic" class="form-control" placeholder="Например: 'Преимущества утренней зарядки'" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tone" class="form-label">Тональность:</label>
+                        <input type="text" name="tone" id="tone" class="form-control" placeholder="Например: 'Мотивационный, позитивный'" required>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="checkbox" name="generate_image" id="generate_image" class="form-check-input">
+                        <label for="generate_image" class="form-check-label">Сгенерировать изображение</label>
+                    </div>
+                    <div class="form-check mb-4">
+                        <input type="checkbox" name="auto_post" id="auto_post" class="form-check-input">
+                        <label for="auto_post" class="form-check-label">Опубликовать в VK автоматически</label>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">Сгенерировать</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {% if post_content or image_url %}
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Результат</h4>
+            </div>
+            <div class="card-body">
+                {% if post_content %}
+                <h5>Сгенерированный пост:</h5>
+                <p class="text-muted" style="white-space: pre-wrap;">{{ post_content }}</p>
+                {% endif %}
+
+                {% if image_url %}
+                <h5 class="mt-4">Сгенерированное изображение:</h5>
+                <img src="{{ image_url }}" alt="Generated Image" class="img-fluid rounded mx-auto d-block">
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
